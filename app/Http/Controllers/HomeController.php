@@ -29,4 +29,19 @@ class HomeController extends Controller
         $user = User::find(1);
         return view('home',['user'=>$user]);
     }
+    function createPost(){
+        $data = request()->validate([
+            'caption'=>'required',
+            'image'=>'required',
+        ]);
+        $imagePath = request('image')->store('uploads','public');
+        auth()->user()->posts()->create([
+            'caption'=>$data['caption'],
+             'image'=>$imagePath,
+        ]);
+        //$post->image = $req->file('image')->store('uploads','public');
+      
+        return redirect('/');
+      
+    }
 }

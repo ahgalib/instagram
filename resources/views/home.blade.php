@@ -32,4 +32,13 @@
             </div>
         </div>
     </div>
+    <div class="row pt-4">
+        @foreach($user->posts as $post)
+            <div class="col-md-4">
+                <p>{{$post->caption}}</p>
+                <img src="/storage/{{ $post['image'] }}">
+            </div>
+        @endforeach
+    </div>
+</div>
 @endsection
