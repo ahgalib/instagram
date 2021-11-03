@@ -23,12 +23,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    
-    {
-        $user = User::find(1);
-        return view('home',['user'=>$user]);
-    }
+    public function index($user){
+         $user = User::find($user);
+         return view('home',['user'=>$user]);
+     }
     function createPost(){
         $data = request()->validate([
             'caption'=>'required',
@@ -41,7 +39,8 @@ class HomeController extends Controller
         ]);
         //$post->image = $req->file('image')->store('uploads','public');
       
-        return redirect('/');
+        return redirect('user/'.auth()->user()->id);
       
     }
+    
 }
