@@ -51,10 +51,20 @@ class User extends Authenticatable
             ]);
         });
     }
+    public function followedBy(User $user){
+        return $this->follow->contains('user_id',$user->id);
+    }
+    
     public function posts(){
         return $this->hasMany(Post::class)->orderBy('created_at','DESC');
     }
     public function profile(){
         return $this->hasOne(Profile::class);
+    }
+    public function follow(){
+        return $this->hasMany(Follower::class);
+    }
+    public function following(){
+        return $this->hasMany(Follower::class);
     }
 }

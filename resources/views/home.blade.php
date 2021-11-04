@@ -10,17 +10,32 @@
         </div>
         <div class="col-8">
             <div class="d-flex">
-                <div style="margin-right:200px;"><h3 style="font-family:Ravie">{{$user->name}}</h3></div>
+                <div style="margin-right:30px;"><h3 style="font-family:Ravie">{{$user->name}}</h3></div>
+                @if($user->followedBy(auth()->user()))
+                    <div style="margin-right:10px;">
+                        <form action="{{route('user.following',$user->id)}}" method="post">
+                            @csrf
+                            <button type="submit"class="btn btn-primary btn-sm">follow</button>
+                        </form>
+                    </div>
+                @else
+                    <div style="margin-right:200px;">
+                        <form action="" method="post">
+                            @csrf
+                            <button type="submit"class="btn btn-dark text-light btn-sm">Unfollow</button>
+                        </form>
+                    </div>
+                @endif
                 <div>
-                @can('update',$user->profile)
-                    <button class="btn btn-primary"><a style="color:white;text-decoration:none;font-family:Tempus Sans ITC;"href="/addpost">Add new post</a></button>
-                @endcan
+                    @can('update',$user->profile)
+                        <button class="btn btn-success p-2"><a style="color:white;text-decoration:none;font-family:Tempus Sans ITC;"href="/addpost">Add new post</a></button>
+                    @endcan
                 </div>
             </div>
             <div class="d-flex">
                 <div style="margin-right:30px;font-family:Lucida Calligraphy"class="pr-3"><strong>{{$user->posts->count()}} </strong>posts</div>
-                <div style="margin-right:30px;font-family:Lucida Calligraphy"class="pr-3"><strong>22k </strong>follower</div>
-                <div style="font-family:Lucida Calligraphy"class="pr-3"><strong>155 </strong>following</div>
+                <div style="margin-right:30px;font-family:Lucida Calligraphy"class="pr-3"><strong>{{$user->following->count()}}k </strong>follower</div>
+                <div style="font-family:Lucida Calligraphy"class="pr-3"><strong>{{$user->profile->follow->count()}} </strong>following</div>
             </div>
             <div>
                 @can('update',$user->profile)

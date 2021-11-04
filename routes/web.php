@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostCon;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileCon;
-
+use App\Http\Controllers\NewsfeedCon;
+use App\Http\Controllers\FollowerFollwoingCon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +18,9 @@ use App\Http\Controllers\ProfileCon;
 */
 
  Route::get('/', function () {
-     return view('welcome');
+     return view('page');
  });
+ Route::get('/imagefeed',[NewsfeedCon::class,'index']);
 
 Auth::routes();
 
@@ -30,3 +32,4 @@ Route::get('/p/{post}/',[PostCon::class,'show']);//for showing single picture
 Route::get('/profile/{user}/edit',[ProfileCon::class,'edit']);
 Route::patch('/profile/{user}',[ProfileCon::class,'update']);
 //Route::get('/post/{user}', [PostCon::class,'find']);
+Route::post('/user/{user}/following', [FollowerFollwoingCon::class, 'store'])->name('user.following');

@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Follower extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'caption',
-        'image',
+        'profile_id',
+        
     ];
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-   
+
 }

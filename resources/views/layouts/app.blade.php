@@ -54,7 +54,7 @@
                             @endif
                             @else 
                                 <li class="nav-item">
-                                    <a style="text-decoration:none;font-size:25px;font-family:Matura MT Script Capitals;"id="navbarDropdown" class="text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a style="text-decoration:none;font-size:25px;font-family:Matura MT Script Capitals;"id="navbarDropdown" class="text-dark" href="/user/{{auth()->user()->id}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                     </a>
                                 </li>
