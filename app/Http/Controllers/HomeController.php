@@ -27,13 +27,13 @@ class HomeController extends Controller
          $user = User::find($user);
          return view('home',['user'=>$user]);
      }
-    function createPost(){
+    function createPost(Request $req){
         $data = request()->validate([
             'caption'=>'required',
             'image'=>'required',
         ]);
         $imagePath = request('image')->store('uploads','public');
-        auth()->user()->posts()->create([
+        $req->user()->posts()->create([
             'caption'=>$data['caption'],
              'image'=>$imagePath,
         ]);

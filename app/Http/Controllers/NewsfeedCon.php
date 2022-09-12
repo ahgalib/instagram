@@ -9,7 +9,7 @@ use App\Models\User;
 class NewsfeedCon extends Controller
 {
     public function index(){
-        $post = Post::all();
+        $post = Post::get();
         return view('imagefeed',['post'=>$post]);
     }
     

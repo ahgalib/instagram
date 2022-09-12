@@ -5,13 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-4 ml-3">
              <div style="margin-left:90px;">
-                 <img class="rounded-circle"src="/storage/{{$user->profile->image}}" style="width:190px;height:170px">
+                 <img class="rounded-circle"src="/storage/{{$user->profile->image}}" style="width:190px;height:170px";>
             </div>
         </div>
         <div class="col-8">
             <div class="d-flex">
                 <div style="margin-right:30px;"><h3 style="font-family:Ravie">{{$user->name}}</h3></div>
-                @if($user->followedBy(auth()->user()))
+                @if(!$user->followedBy(auth()->user()))
                     <div style="margin-right:10px;">
                         <form action="{{route('user.following',$user->id)}}" method="post">
                             @csrf
@@ -55,7 +55,7 @@
         @foreach($user->posts as $post)
             <div class="col-md-4 mb-5">
                 <a href="/p/{{$post->id}}">
-                <img src="/storage/{{ $post['image'] }}" style="width:350px;height:360px;">
+                    <img src="/storage/{{ $post['image'] }}" style="width:350px;height:360px;">
                 </a>
                 <p style="font-size:22px;font-family:Forte;">{{$post->caption}}</p>
             </div>

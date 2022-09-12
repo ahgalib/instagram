@@ -20,6 +20,7 @@ use App\Http\Controllers\FollowerFollwoingCon;
  Route::get('/', function () {
      return view('page');
  });
+ //instagram news feed
  Route::get('/imagefeed',[NewsfeedCon::class,'index']);
 
 Auth::routes();
@@ -33,3 +34,6 @@ Route::get('/profile/{user}/edit',[ProfileCon::class,'edit']);
 Route::patch('/profile/{user}',[ProfileCon::class,'update']);
 //Route::get('/post/{user}', [PostCon::class,'find']);
 Route::post('/user/{user}/following', [FollowerFollwoingCon::class, 'store'])->name('user.following');
+
+
+
