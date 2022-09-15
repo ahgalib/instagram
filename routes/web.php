@@ -34,6 +34,9 @@ Route::get('/profile/{user}/edit',[ProfileCon::class,'edit']);
 Route::patch('/profile/{user}',[ProfileCon::class,'update']);
 //Route::get('/post/{user}', [PostCon::class,'find']);
 Route::post('/user/{user}/following', [FollowerFollwoingCon::class, 'store'])->name('user.following');
+//like and unlike  route
+Route::post('/post/{id}/like',[PostCon::class,'like']);
+Route::post('/post/{id}/unlike',[PostCon::class,'unlike']);
 
 
 
