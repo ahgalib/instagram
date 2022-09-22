@@ -3,6 +3,18 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col-md-12">
+            <form action="">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="search" style="border-radius:10px;">
+                    <button class="btn btn-primary btn-sm" style="border-radius:10%;">Search</button>
+                    <p>showing result of <span style="color:green;font-size:19px;">'{{$search}}'</span></p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="row">
         @foreach($post as $posts)
             <div class="col-md-5 m-3 text-center" style="margin:auto;">
                 <div class="card">
