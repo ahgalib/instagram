@@ -1,5 +1,6 @@
 
 @extends('layouts.app')
+@section('title'){{$post->user->name.'/image'}}@endsection
 
 @section('content')
 <div class="container">

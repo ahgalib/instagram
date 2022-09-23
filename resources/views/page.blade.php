@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title'){{'Instagram'}}@endsection
 
 @section('content')
 <div class="container">

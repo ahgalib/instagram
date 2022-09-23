@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title'){{'ImageFeed'}}@endsection
 
 @section('content')
 <div class="container">
@@ -6,14 +7,13 @@
         <div class="col-md-12">
             <form action="">
                 <div class="form-group">
-                    <input type="text" name="search" placeholder="search" style="border-radius:10px;">
+                    <input type="text" name="search" placeholder="search" value="{{$search}}" style="border-radius:10px;">
                     <button class="btn btn-primary btn-sm" style="border-radius:10%;">Search</button>
-                    <p>showing result of <span style="color:green;font-size:19px;">'{{$search}}'</span></p>
+                
                 </div>
             </form>
         </div>
-
-    </div>
+     </div>
     <div class="row">
         @foreach($post as $posts)
             <div class="col-md-5 m-3 text-center" style="margin:auto;">
@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-md-12 d-flex">
                                 <div style="">
-                                    <a href="/user/{{auth()->user()->id}}"><img class="rounded-circle"src="/storage/{{$posts->user->profile->image}}" style="width:60px;height:50px";></a>
+                                    <a href="/user/{{$posts->user->id}}"><img class="rounded-circle"src="/storage/{{$posts->user->profile->image}}" style="width:60px;height:50px";></a>
                                 </div>
                                 <div style="margin-left:30px;margin-top:10px;">
                                     <h5>{{$posts->user->name}}</h5>

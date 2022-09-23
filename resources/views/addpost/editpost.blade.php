@@ -1,5 +1,5 @@
-
 @extends('layouts.app')
+@section('title'){{'Edit Post'}}@endsection
 
 @section('content')
 <div class="container">
