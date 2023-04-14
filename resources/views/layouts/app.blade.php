@@ -13,16 +13,23 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
     <!-- fontAewsome -->
     <link rel="stylesheet" href="fontawesome/css/all.css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,700&family=Dancing+Script&family=DynaPuff:wght@400;500;600;700&family=Faustina&family=Mukta:wght@300&family=Pacifico&family=Signika+Negative:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/imagefeed') }}"style="font-family:Lucida Handwriting;font-weight:bold;">
                     Instagram
@@ -52,7 +59,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                            @else 
+                            @else
                                 <li class="nav-item">
                                     <a style="text-decoration:none;font-size:25px;font-family:Matura MT Script Capitals;"id="navbarDropdown" class="text-dark" href="/user/{{auth()->user()->id}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
@@ -72,7 +79,20 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
+
+        <div class="sidebar_section">
+            <h1>Instagram</h1>
+            <ul>
+                <li><i class="fa-solid fa-house"></i>Home</li>
+                <li><i class="fa-solid fa-magnifying-glass"></i>Search</li>
+                <li><i class="fa-regular fa-message"></i>Message</li>
+                <li><i class="fa-regular fa-heart"></i>Notification</li>
+                <li>Profile</li>
+                <li><i class="fa-solid fa-bars"></i>More</li>
+            </ul>
+
+        </div>
 
         <main class="py-4">
             @yield('content')
