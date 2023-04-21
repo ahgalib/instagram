@@ -12,7 +12,7 @@ class Post extends Model
         'caption',
         'image',
     ];
-   
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -24,5 +24,9 @@ class Post extends Model
     public function likedBy(User $user){
         return $this->like->contains('user_id',$user->id);
     }
-   
+
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
+
 }

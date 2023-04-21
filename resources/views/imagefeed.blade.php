@@ -2,14 +2,13 @@
 @section('title'){{'ImageFeed'}}@endsection
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row">
         <div class="col-md-12">
             <form action="">
                 <div class="form-group">
-                    <input type="text" name="search" placeholder="search" value="{{$search}}" style="border-radius:10px;">
+                    <input type="text" name="search" placeholder="search" value="" style="border-radius:10px;">
                     <button class="btn btn-primary btn-sm" style="border-radius:10%;">Search</button>
-                
                 </div>
             </form>
         </div>
@@ -42,7 +41,6 @@
                                 <img style="width:300px;height:250px;"src="storage/{{$posts->image}}" alt="">
                             </div>
                         </div>
-                        
                     </div>
                     <div class="row">
                         <div class="card-footer">
@@ -54,21 +52,85 @@
                                 </form>
                                 <strong>{{$posts->like->count()}} Like</strong>
                                 @else
-                                <p>you and {{$posts->like->count()}} other Like   </p>
+                                    @if($posts->like->count()<=1)
+                                        <p>you Like this</p>
+                                    @else
+                                        <p>you and {{$posts->like->count()-1}} other Like   </p>
+                                    @endif
                                 <form action="/post/{{$posts->id}}/unlike" method="post">
                                 @csrf
                                     <button type="submit"  class="fa-solid fa-thumbs-down bg" style="border:none;font-size:25px;margin-left:190px;"> </button>unlike
                                 </form>
                                 @endif
-                               
                             </div>
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </div>
         @endforeach
         <!-- paginate -->
         {{$post->links()}}
      </div>
+</div> --}}
+
+
+
+<div class="newsfeed_section">
+    @foreach($post as $posts)
+        <div class="main_seciton">
+            <div class="header_section">
+                <a href="/user/{{$posts->user->id}}"><img src="/storage/{{$posts->user->profile->image}}" alt="" class="profile_image"></a>
+                <a href="/user/{{$posts->user->id}}"><h3>{{$posts->user->name}}</h3></a>
+                <p> {{$posts->created_at->diffForHumans()}}</p>
+            </div>
+            <div class="body_section">
+                <img src="storage/{{$posts->image}}" alt="" class="upload_image">
+            </div>
+            <div class="footer_section">
+                <div class="like_part">
+                    @if(!$posts->likedBy(auth::user()))
+                        <form action="/post/{{$posts->id}}/like" method="post">
+                            @csrf
+                            <button type="submit"  class="fa-regular fa-heart" style="border:none;font-size:25px;margin-right:30px;"> </button>
+                        </form>
+                    @else
+                        <form action="/post/{{$posts->id}}/unlike" method="post">
+                        @csrf
+                            <button type="submit"  class="fa-regular fa-heart red" style="border:none;font-size:25px;color:red;margin-right:30px;"> </button>
+                        </form>
+                    @endif
+                    <a href="/post/comment/{{$posts->id}}"><i class="fa-regular fa-comment"></i></a>
+                    <i class="fa-regular fa-paper-plane"></i>
+                </div>
+                <div class="like_count">
+                    @if($posts->like->count()==0)
+                        <p>no one like this</p>
+                    @elseif($posts->like->count() == 1 && $posts->likedBy(auth::user()))
+                        <p>you <span style="color:red;">liked </span> this</p>
+                    @elseif($posts->like->count() ==2 && $posts->likedBy(auth::user()))
+                        <p>you and {{$posts->like->count()-1}} other <span style="color:red;">liked </span> this </p>
+                    @else
+                        <p>{{$posts->like->count()}} likes</p>
+                    @endif
+                </div>
+                <div class="caption_section">
+                    <h4>{{$posts->user->name}}</h4>
+                    <p>{{$posts->caption}}</p>
+                </div>
+                <div class="view_comment">
+                    @if($posts->comment->count() == 0)
+                        <p>No comments yet</p>
+                    @elseif($posts->comment->count() == 1)
+                        <p><a href="/post/comment/{{$posts->id}}"> comment only </a></p>
+                    @else
+                        <p><a href="/post/comment/{{$posts->id}}"> View all {{$posts->comment->count()}} comments </a></p>
+                    @endif
+                    <p>Add a comment</p>
+                </div>
+
+            </div>
+        </div>
+    @endforeach
+
 </div>
 @endsection
