@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Auth;
 class ProfileCon extends Controller
 {
     public function index()
@@ -21,18 +21,23 @@ class ProfileCon extends Controller
             'description'=>'required',
             'url'=>'required',
             'image'=>'',
-           
+
         ]);
         if(request('image')){
             $imagePath = request('image')->store('profile','public');
             $imageArray = ['image'=>$imagePath];
         }
-       
+
         auth()->user()->profile->update(array_merge(
             $data,
             $imageArray ?? [],
         ));
         //auth()->user()->profile->update($data);
         return redirect('user/'.auth()->user()->id);
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/login');
     }
 }

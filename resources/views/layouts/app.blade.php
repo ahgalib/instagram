@@ -82,15 +82,18 @@
         </nav> --}}
 
         <div class="sidebar_section">
-            <h1>Instagram</h1>
-            <ul>
-                <li><i class="fa-solid fa-house"></i>Home</li>
-                <li><i class="fa-solid fa-magnifying-glass"></i>Search</li>
-                <li><i class="fa-regular fa-message"></i>Message</li>
-                <li><i class="fa-regular fa-heart"></i>Notification</li>
-                <li>Profile</li>
-                <li><i class="fa-solid fa-bars"></i>More</li>
-            </ul>
+            <div class="sidebar_content">
+                <h1><a href="/imagefeed">Instagram</a></h1>
+                <ul>
+                    <li><i class="fa-solid fa-house"></i>Home</li>
+                    <li><i class="fa-solid fa-magnifying-glass"></i>Search</li>
+                    <li><i class="fa-regular fa-message"></i>Message</li>
+                    <li><i class="fa-regular fa-heart"></i>Notification</li>
+                    <li>Profile</li>
+                    <li><i class="fa-solid fa-bars"></i>More</li>
+                    <a href="{{ route('insta.logout') }}"><li><i class="fa-solid fa-bars"></i>Logout</li></a>
+                </ul>
+            </div>
 
         </div>
 
@@ -98,5 +101,8 @@
             @yield('content')
         </main>
     </div>
+
+    <script src={{asset('js/jquery-1.12.4.min.js')}}></script>
+    <script src={{asset('js/insta.js')}}></script>
 </body>
 </html>

@@ -99,16 +99,16 @@
                             <button type="submit"  class="fa-regular fa-heart red" style="border:none;font-size:25px;color:red;margin-right:30px;"> </button>
                         </form>
                     @endif
-                    <i class="fa-regular fa-comment"></i>
+                    <a href="/post/comment/{{$posts->id}}"><i class="fa-regular fa-comment"></i></a>
                     <i class="fa-regular fa-paper-plane"></i>
                 </div>
                 <div class="like_count">
                     @if($posts->like->count()==0)
                         <p>no one like this</p>
                     @elseif($posts->like->count() == 1 && $posts->likedBy(auth::user()))
-                        <p>you like this</p>
-                    @elseif($posts->like->count() >=2 && $posts->likedBy(auth::user()))
-                        <p>you and {{$posts->like->count()-1}} other Like   </p>
+                        <p>you <span style="color:red;">liked </span> this</p>
+                    @elseif($posts->like->count() ==2 && $posts->likedBy(auth::user()))
+                        <p>you and {{$posts->like->count()-1}} other <span style="color:red;">liked </span> this </p>
                     @else
                         <p>{{$posts->like->count()}} likes</p>
                     @endif
@@ -118,7 +118,13 @@
                     <p>{{$posts->caption}}</p>
                 </div>
                 <div class="view_comment">
-                    <p>View all 434343 comments</p>
+                    @if($posts->comment->count() == 0)
+                        <p>No comments yet</p>
+                    @elseif($posts->comment->count() == 1)
+                        <p><a href="/post/comment/{{$posts->id}}"> comment only </a></p>
+                    @else
+                        <p><a href="/post/comment/{{$posts->id}}"> View all {{$posts->comment->count()}} comments </a></p>
+                    @endif
                     <p>Add a comment</p>
                 </div>
 

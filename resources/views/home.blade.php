@@ -81,8 +81,9 @@
 </div> --}}
 
 <div class="profile_page">
-    <div class="profile_section">
-        <div class="container">
+    <div class="container">
+        <div class="profile_section">
+
             <div class="profile_header">
                 <div class="profile_header_image">
                     <img src="/storage/{{$user->profile->image}}" alt="">
@@ -99,20 +100,64 @@
                         <p><strong>6 </strong> follower</p>
                     </div>
                     <div class="caption_info">
-                        <h3>{{$user->name}}</h3>
+                        <h4>{{$user->name}}</h4>
                         <p>{{$user->profile->title}}</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="post_section">
-        <div class="container">
+        <div class="post_section">
+
             <p class="post_section_p">post</p>
             <div class="post_image_section">
                 @foreach($user->posts as $post)
-                <img src="/storage/{{ $post['image'] }}" alt="">
+                    <div class="single_post">
+                        <div class="single_post_image">
+                            <img src="/storage/{{ $post['image'] }}" alt="">
+                        </div>
+                        <div class="single_post_like">
+                            @if(!$post->likedBy(auth::user()))
+                                <form action="/post/{{$post->id}}/like" method="post">
+                                    @csrf
+                                    <button type="submit"  class="fa-regular fa-heart" style="border:none;font-size:25px;"> </button>
+                                    <i class="fa-regular fa-comment"></i>
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                </form>
+                            @else
+                                <form action="/post/{{$post->id}}/unlike" method="post">
+                                @csrf
+                                    <button type="submit"  class="fa-regular fa-heart red" style="border:none;font-size:25px;color:red;"> </button>
+                                    <a href="/post/comment/{{$post->id}}"><i class="fa-regular fa-comment"></i></a>
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                </form>
+                            @endif
+
+                        </div>
+                        <div class="like_count">
+                            @if($post->like->count()==0)
+                                <p>no one like this</p>
+                            @elseif($post->like->count() == 1 && $post->likedBy(auth::user()))
+                                <p>you <span style="color:red;">liked </span> this</p>
+                            @elseif($post->like->count() ==2 && $post->likedBy(auth::user()))
+                                <p>you and {{$post->like->count()-1}} other <span style="color:red;">liked </span> this </p>
+                            @else
+                                <p>{{$post->like->count()}} likes</p>
+                            @endif
+                        </div>
+
+                        <div class="comment_count" style="margin-bottom:5px;">
+                            @if($post->comment->count()==0)
+                                <p><a href="/post/comment/{{$post->id}}">no comment yet </a></p>
+                            @elseif($post->comment->count() == 1)
+                                <p><a href="/post/comment/{{$post->id}}">1 comment only </a></p>
+
+                            @else
+                                <p><a href="/post/comment/{{$post->id}}">{{$post->comment->count()}} comments </a></p>
+                            @endif
+                        </div>
+                    </div>
+
                 @endforeach
             </div>
         </div>
@@ -120,3 +165,20 @@
 
 </div>
 @endsection
+
+
+{{-- <div class="like_part">
+    @if(!$post->likedBy(auth::user()))
+        <form action="/post/{{$post->id}}/like" method="post">
+            @csrf
+            <button type="submit"  class="fa-regular fa-heart" style="border:none;font-size:25px;margin-right:30px;"> </button>
+        </form>
+    @else
+        <form action="/post/{{$post->id}}/unlike" method="post">
+        @csrf
+            <button type="submit"  class="fa-regular fa-heart red" style="border:none;font-size:25px;color:red;margin-right:30px;"> </button>
+        </form>
+    @endif
+    <i class="fa-regular fa-comment"></i>
+    <i class="fa-regular fa-paper-plane"></i>
+</div> --}}
