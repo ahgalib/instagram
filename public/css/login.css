@@ -1,0 +1,95 @@
+/* common css*/
+a{
+    text-decoration: none;
+    color:#00f79c;;
+}
+
+a:hover{
+    text-decoration: none;
+    color:#3eb78a;
+}
+/* common css end */
+
+.main_login{
+
+    background:url('/image/login/pexels-thiago-japyassu-1069798.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height:100vh;
+    width: 100%;
+
+
+}
+
+.contant_login{
+    width:100%;
+    min-height:100vh;
+    margin:auto;
+
+    text-align:center;
+    padding:50px 20px;
+    background: rgba(5, 5, 5, 0.642);
+    color:white;
+
+}
+
+.login_form{
+    width:50%;
+
+    padding:40px 20px;
+    border:.5px solid rgb(250, 159, 174);
+    border-radius: 10px;
+    margin:auto;
+}
+.login_form h3{
+    padding-bottom:30px;
+}
+
+.login_form .form-group{
+    margin-bottom:25px;
+}
+
+
+
+.contant_register{
+    width:100%;
+    height:100%;
+    margin:auto;
+
+    text-align:center;
+    padding:50px 20px;
+    background: rgba(5, 5, 5, 0.642);
+    color:white;
+}
+
+.register_form{
+    width:50%;
+
+    padding:40px 20px;
+    border:.5px solid rgb(250, 159, 174);
+    border-radius: 10px;
+    margin:auto;
+}
+
+.register_form .form-group{
+    margin-bottom:25px;
+}
+
+.register_form h3{
+    color: aqua;
+    padding-bottom:30px;
+    position:relative;
+}
+
+.register_form h3::after{
+    position: absolute;
+    bottom: 28%;
+    left: 16%;
+    width: 70%;
+    height: 2px;
+    background: #03c791;
+    content: '';
+}
+
+

@@ -7,6 +7,8 @@ use App\Http\Controllers\ProfileCon;
 use App\Http\Controllers\NewsfeedCon;
 use App\Http\Controllers\FollowerFollwoingCon;
 use App\Http\Controllers\CommentCon;
+use App\Http\Controllers\GithubCon;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +20,11 @@ use App\Http\Controllers\CommentCon;
 |
 */
 
- Route::get('/', function () {
-     return view('page');
- });
- //instagram news feed
- Route::get('/imagefeed',[NewsfeedCon::class,'index']);
+Route::get('/', function () {
+    return view('page');
+});
+//instagram news feed
+Route::get('/imagefeed',[NewsfeedCon::class,'index']);
 
 Auth::routes();
 
@@ -46,3 +48,7 @@ Route::post('post/comment/save',[CommentCon::class,'create'])->name('comment.cre
 
 //logout
 Route::get('/ins/jkkjkjsd/kksdf',[ProfileCon::class,'logout'])->name('insta.logout');
+
+//github login
+Route::get('github/redirect',[GithubCon::class,'redirect_to_provider'])->name('github.redirect');
+Route::get('github/callback',[GithubCon::class,'provider_to_application'])->name('github.callback');

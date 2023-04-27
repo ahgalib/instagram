@@ -91,7 +91,11 @@
                     <li><i class="fa-regular fa-heart"></i>Notification</li>
                     <li>Profile</li>
                     <li><i class="fa-solid fa-bars"></i>More</li>
+                    @auth
                     <a href="{{ route('insta.logout') }}"><li><i class="fa-solid fa-bars"></i>Logout</li></a>
+                    @else
+                    <a href="{{ route('login') }}"><li><i class="fa-solid fa-bars"></i>Login</li></a>
+                    @endauth
                 </ul>
             </div>
 

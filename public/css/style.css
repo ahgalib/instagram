@@ -2,7 +2,7 @@
 *{
     padding:0px;
     margin:0px;
-    background: #030201;
+    background: black;
     color:white;
 
 }
@@ -404,6 +404,11 @@ a:hover{
     padding: 0px 5px
 }
 
+/* login page start */
+
+
+/* login page end */
+
 /* .comment_content{
     padding:50px 90px;
 
@@ -436,3 +441,5 @@ a:hover{
 } */
 
 /* comment section end */
+
+
