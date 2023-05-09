@@ -1,7 +1,7 @@
 /* common css*/
 a{
     text-decoration: none;
-    color:#00f79c;;
+    color:#00f79c;
 }
 
 a:hover{
@@ -93,3 +93,22 @@ a:hover{
 }
 
 
+@media(max-width:540px){
+    .login_form{
+        width:100%;
+
+        padding:40px 20px;
+        border:.5px solid rgb(250, 159, 174);
+        border-radius: 10px;
+        margin:auto;
+    }
+
+    .register_form{
+        width:100%;
+
+        padding:40px 20px;
+        border:.5px solid rgb(250, 159, 174);
+        border-radius: 10px;
+        margin:auto;
+    }
+}

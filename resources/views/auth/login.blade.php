@@ -16,6 +16,10 @@
         <div class="contant_login">
             <div class="login_form">
                 <h3><a href="{{route('register')}}">Dont't have any account?</a></h3>
+                @if(session('success'))
+                    <span style="color:#00f79c">{{session('success')}}</span>
+
+                @endif
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
@@ -47,24 +51,19 @@
                         </div>
                     </div>
 
-
-
                     <div class="form-group row">
                         <div class="col-md-5 offset-md-4">
                             <button type="submit" class="btn btn-primary">
                                 {{ __('Login') }}
                             </button>
-
-                            @if (Route::has('password.request'))
-                            <div>
-                                <a class="pl-4" href="{{ route('password.request') }}">
+                            <div class="mt-4">
+                                <a class="pl-4 mt-4" href="{{ route('password.forget.form') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
-
-                            @endif
                         </div>
                     </div>
+
                     <div class="form-group row social">
                         <div class="col-md-7 offset-md-3">
                             <p>or sign in with</p>
@@ -73,11 +72,12 @@
                                 <i class="fa-brands fa-github">&nbsp;&nbsp;</i>github</a>
                             </button>
 
-                            <button class="btn btn-secondary pl-3">
-                                <i class="fa-brands fa-facebook pr-2">&nbsp;&nbsp;</i>facebook
-                            </button>
+                            {{-- <button class="btn btn-dark pl-3"><a href="" class="">
+                                <i class="fa-brands fa-facebook">&nbsp;&nbsp;</i>facebook</a>
+                            </button> --}}
 
-                            <button class="btn btn-info pl-2"><i class="fa-brands fa-google">&nbsp;&nbsp;</i>Google</button>
+                            <button class="btn btn-dark pl-2"><a href="{{route('google.redirect')}}">
+                                <i class="fa-brands fa-google">&nbsp;&nbsp;</i>Google</a></button>
                         </div>
 
                     </div>

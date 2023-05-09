@@ -19,7 +19,7 @@ class NewsfeedCon extends Controller
         if($search != ""){
             $post = Post::where('caption','LIKE',"%$search%")->paginate(4);
         }else{
-            $post = Post::all();
+            $post = Post::latest()->get();
         }
 
         return view('imagefeed',['post'=>$post,'search'=>$search]);

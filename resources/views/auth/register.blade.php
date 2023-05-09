@@ -95,7 +95,7 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-5 offset-md-3">
-                            <p><a href="{{route('login')}}">already have na account? </a></p>
+                            <p><a href="{{route('login')}}">already have an account? </a></p>
                         </div>
                     </div>
                 </form>

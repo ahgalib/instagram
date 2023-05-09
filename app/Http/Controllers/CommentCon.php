@@ -16,6 +16,9 @@ class CommentCon extends Controller
     }
 
     public function create(Request $request){
+         $data = $request->validate([
+            'comment' => 'required',
+         ]);
         Comment::create([
             'user_id' => Auth::user()->id,
             'post_id' => $request->post_id,

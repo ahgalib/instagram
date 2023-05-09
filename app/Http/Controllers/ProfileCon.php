@@ -4,35 +4,88 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Profile;
 use Auth;
+use Image;
 class ProfileCon extends Controller
 {
-    public function index()
-    {
-        return view('home');
+
+    public function __construct(){
+        $this->middleware('auth');
     }
-    public function edit(User $user){
-        $this->authorize('update',$user->profile);
-        return view('addpost.editpost',compact('user'));
+
+    public function create_profile(){
+        return view('profile.create_profile');
     }
-    public function update(User $user){
+
+    public function save_create_profile(Request $request){
         $data = request()->validate([
             'title'=>'required',
-            'description'=>'required',
-            'url'=>'required',
+            'image'=>'',
+        ]);
+
+        if($request->image){
+            $upload_file = $request->image;
+            $extension = $upload_file->getClientOriginalExtension();
+            $image_name = rand(000000,999999).'.'.$extension;
+            Image::make($upload_file)->resize(200,250)->save(public_path('uploads/profile/'.$image_name));
+        }else{
+            $image_name = '';
+        }
+
+        Profile::create([
+            'user_id' => auth::id(),
+            'title' => $request->title,
+            'url' => 'ginsta.top'.'/'.Auth::user()->username,
+            'image' => $image_name,
+        ]);
+
+        return redirect('user/'.auth()->user()->id);
+    }
+
+    public function edit(User $user){
+        // root model binding
+        return view('profile.editprofile',compact('user'));
+    }
+
+    public function update($id,Request $request){
+        $data = request()->validate([
+            'title'=>'required',
+            'description'=>'',
             'image'=>'',
 
         ]);
         if(request('image')){
-            $imagePath = request('image')->store('profile','public');
-            $imageArray = ['image'=>$imagePath];
+
+            //check if old image is exist or not
+            $find_image = Profile::where('user_id', $id)->first();
+            if ($find_image['image']) {
+                $image = $find_image['image'];
+                $image_path = public_path('/uploads/profile/'. $image);
+                //delete old image
+                unlink($image_path);
+            }
+
+            $upload_file = $request->image;
+            $extension = $upload_file->getClientOriginalExtension();
+            $image_name = rand(000000,999999).'.'.$extension;
+            Image::make($upload_file)->resize(200,250)->save(public_path('uploads/profile/'.$image_name));
+
+
+            Profile::where('user_id',$id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' => $image_name,
+            ]);
+
+        }else{
+            Profile::where('user_id',$id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+
+            ]);
         }
 
-        auth()->user()->profile->update(array_merge(
-            $data,
-            $imageArray ?? [],
-        ));
-        //auth()->user()->profile->update($data);
         return redirect('user/'.auth()->user()->id);
     }
 

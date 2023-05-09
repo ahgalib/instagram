@@ -1,16 +1,21 @@
 @extends('layouts.app')
 @section('title'){{'Comment'}}@endsection
-
 @section('content')
+
     <div class="comment_section">
         <div class="comment_content">
             <div class="header_section">
-                <a href="/user/{{$post->user->id}}"><img src="/storage/{{$post->user->profile->image}}" alt="" class="profile_image"></a>
+                @if($post->user->profile->image)
+                    <a href="/user/{{$post->user->id}}"><img src="{{asset('uploads/profile')}}/{{$post->user->profile->image}}" alt="" class="profile_image"></a>
+                @else
+                    <a href="/user/{{$post->user->id}}"><img src="{{ Avatar::create($post->user->name)->toBase64() }}" alt="pp" class="profile_image"></a>
+
+                @endif
                 <a href="/user/{{$post->user->id}}"><h3>{{$post->user->name}}</h3></a>
                 <p> {{$post->created_at->diffForHumans()}}</p>
             </div>
             <div class="body_section">
-                <img src="/storage/{{$post->image}}" alt="" class="comment_upload_image">
+                <img src="{{asset('uploads/posts')}}/{{$post->image}}" alt="" class="comment_upload_image">
             </div>
             <div class="footer_section">
                 <div class="like_part">
@@ -46,24 +51,30 @@
                 <div class="comment_area">
 
                     <div class="comment_user_profile">
-                        <a href="/user/{{$post->user->id}}"><img src="/storage/{{$post->user->profile->image}}" alt="" class="comment_profile_image"></a>
+                        <a href="/user/{{$post->user->id}}"><img src="{{asset('uploads/profile')}}/{{$post->user->profile->image}}" alt="" class="comment_profile_image"></a>
                     </div>
                     <form action="{{route('comment.create')}}" method="post">
                         @csrf
                         <div class="comment_input">
                             <input type="hidden" name="post_id" value={{$post->id}}>
                             <input type="text" class="comment_input" name="comment" placeholder="leave a comment">
+                            @error('comment')<span style="color:red">{{$message}} </span>@enderror
                             <button class="btn-comment">comment</button>
                         </div>
                     </form>
                 </div>
                 <div>
-                    <h5>{{$comments->count()}} Comment </h5>
+                    <h5 class="comment_count">{{$comments->count()}} Comment </h5>
                 </div>
                 @foreach ($comments as $comment)
                     <div class="show_comment_area">
                         <div class="comment_user_profile">
-                            <a href="/user/{{$comment->user->id}}"><img src="/storage/{{$comment->user->profile->image}}" alt="" class="comment_profile_image"></a>
+                            @if($comment->user->profile->image)
+                                <a href="/user/{{$comment->user->id}}"><img src="{{asset('uploads/profile')}}/{{$comment->user->profile->image}}" alt="" class="comment_profile_image"></a>
+                            @else
+                                <a href="/user/{{$comment->user->id}}"><img src="{{ Avatar::create($comment->user->name)->toBase64() }}" alt="pp" class="profile_image"></a>
+                            @endif
+
                         </div>
 
                         <form action="{{route('comment.create')}}" method="post">
@@ -77,9 +88,15 @@
                             </div>
                     </div>
                     @foreach ($comment->replies as $reply)
-                        <div class="show_comment_area" style="margin-left:60px">
+                        <div class="show_comment_area" style="margin-left:15%;width:80%;">
                             <div class="comment_user_profile">
-                                <a href="/user/{{$reply->user->id}}"><img src="/storage/{{$reply->user->profile->image}}" alt="" class="comment_profile_image"></a>
+
+
+                                @if($reply->user->profile->image)
+                                    <a href="/user/{{$reply->user->id}}"><img src="{{asset('uploads/profile')}}/{{$reply->user->profile->image}}" alt="" class="comment_profile_image"></a>
+                                @else
+                                    <a href="/user/{{$reply->user->id}}"><img src="{{ Avatar::create($reply->user->name)->toBase64() }}" alt="" class="comment_profile_image"></a>
+                                @endif
                             </div>
 
                             {{-- comment er jaygay duita foreach ace ekta comment show korbe r ekta oi comment er reply show korbe,kintu form ace ektai..comment create er form r reply er form ektai --}}
@@ -95,14 +112,15 @@
                 @endforeach
                 <div class="reply-div" id="reply">
                     <input type="hidden" name="post_id" value={{$post->id}}>
-                    <input type="text" name="parent_id" class="parent">
+                    <input type="hidden" name="parent_id" class="parent">
                     <input type="text" name="comment" placeholder="reply">
-                    <button>submit</button>
+                    @error('comment')<span style="color:red">{{$message}} </span>@enderror
+                    <button class="reply-submit">submit</button>
                 </div>
                             </form>
                             {{-- ai from ta srart hoise line 69 a --}}
-                </div>
             </div>
+        </div>
 
 
     </div>

@@ -44,9 +44,7 @@ class User extends Authenticatable
     ];
 
 
-    public function followedBy(User $user){
-        return $this->follow->contains('user_id',$user->id);
-    }
+
 
     public function posts(){
         return $this->hasMany(Post::class)->orderBy('created_at','DESC');

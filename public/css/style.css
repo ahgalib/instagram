@@ -17,9 +17,15 @@ a{
 }
 a:hover{
     text-decoration: none;
-    color:white;
+    color:rgb(253, 167, 54);
+    transition: .2s;
+   /* background-color: rgb(240, 227, 227); */
 }
 
+/* button a{
+    color:black;
+    background-color: white;
+} */
 
 .clr{
     clear: both;
@@ -30,7 +36,7 @@ a:hover{
 }
 /* sidebar section start */
 .sidebar_section{
-    width:300px;
+    width:370px;
 
 
     height:100%;
@@ -39,7 +45,7 @@ a:hover{
 }
 .sidebar_content{
     padding-top:20px;
-    padding-right:50px;
+    padding-right:71px;
     padding-left:40px;
     position:fixed;
     border-right:0.5px solid #484343;
@@ -51,6 +57,10 @@ a:hover{
     padding:40px;
     font-family: 'Pacifico', serif;
     font-weight: 400;
+}
+.sidebar_section h1 a:hover{
+    color:rgb(20, 219, 219);
+    transition: .5s;
 }
 
 .sidebar_section ul{
@@ -72,6 +82,7 @@ a:hover{
 
 
 /* main section start */
+
 .newsfeed_section{
     width: 635px;
     border-right:0.5px solid #484343;
@@ -120,6 +131,35 @@ a:hover{
 
 }
 /* main section end */
+/* main section footer start */
+
+.header-responsive{
+    width: 635px;
+
+    height:60px;
+    position:fixed;
+    top:0;
+    left:370px;
+    display:flex;
+    justify-content: space-between;
+    display:none;
+    visibility: hidden;
+}
+
+.footer{
+    width: 100%;
+        height:40px;
+        position:fixed;
+        bottom:0;
+    display:block;
+    visibility: hidden;
+
+}
+
+
+
+/* main section footer end */
+
 
 /* footer section start */
 .like_part{
@@ -190,14 +230,18 @@ a:hover{
 
 
 /* profile section start */
+
 .profile_page{
  padding-top:40px;
  padding-left:30px;
 }
+
+
+
 .container{
     width: 929px;
 
-    margin-left: 20px;
+    margin-left: 300px;
     /* background-color:red; */
 }
 
@@ -246,16 +290,17 @@ a:hover{
 }
 
 .name_info button{
-    background-color: white;
-    color:black;
+
+
     padding:8px 15px;
-    border-radius: 10px;
+
     font-size:14px;
     margin-left:20px;
     margin-right:20px;
     margin-top:-10px;
 
 }
+
 
 .post_follower_info{
     margin-top:30px;
@@ -268,10 +313,14 @@ a:hover{
 }
 
 .caption_info p{
-    margin-top:5px;
+    margin-top:16px;
 }
 /* profile section end */
 
+/* create profile start */
+
+
+/* create profile end */
 
 /* post section start */
 
@@ -279,25 +328,29 @@ a:hover{
     color:white;
 
 }
-.post_section_p{
-    text-align:center;
-
-    font-size:22px;
+.add_post_div{
+    display: flex;
+    padding: 0px 50px;
+    justify-content: space-around;
+}
+.add_post_div p{
+    font-size:21px;
 }
 .post_image_section{
     margin-top:15px;
 }
 .single_post{
-    width:300px;float:left
+    width:300px;
+    float:left
 }
 .post_image_section img{
-    width: 323px;
-    height: 290px;
+    width: 282px;
+    height: 288px;
     margin: 4px;
 }
 
 .single_post_like{
-    margin:10px 12px;
+    margin:10px 9px;
 
 }
 .single_post_like i{
@@ -350,6 +403,9 @@ a:hover{
 .show_comment_area{
     display:flex;
     padding: 10px 0px;
+    border: 1px solid #1e1d1d;
+    border-radius: 10px;
+    margin:10px 0px;
 }
 
 .comment_header{
@@ -404,41 +460,583 @@ a:hover{
     padding: 0px 5px
 }
 
-/* login page start */
-
-
-/* login page end */
-
-/* .comment_content{
-    padding:50px 90px;
-
-    border-bottom:0.5px solid #484343;
-}
-
-.comment_header_section{
-    display: flex;
-}
-
-
-
-.comment_header_section h3{
-    padding-top: 17px;
-    padding-left:20px;
-    font-size:22px;
+/* phone view profile page section start */
+.phone_view{
+    display:none;
 
 }
+/* phone view profile page section end */
 
-.comment_header_section h3:hover{
-    color:#868686;
-    transition: .3s;
+/* profile edit start */
+.responsive_container{
+    display:none;
+}
+/* profile edit end */
+
+/* add post start */
+.addpost_responsive_container{
+    display:none;
+}
+/* add post end */
+
+/* responsive start */
+@media(max-width:580px){
+    /* sidebar section start */
+    *{
+        margin:0px;
+        padding:0px;
+    }
+    .sidebar_section{
+        width:100px;
+        display:none;
+        height:100%;
+    }
+    /* sidebar section end */
+
+    /* main section start */
+    .newsfeed_section{
+        width: 100%;
+        border-right:0.5px solid #484343;
+    }
+    .main_seciton{
+        padding: 50px 4px;
+        border-bottom:0.5px solid #484343;
+    }
+
+    .view_comment p{
+        font-size: 13px;
+        color: #a3a2a2;
+        margin-top: 17px;
+        margin-bottom:2px;
+    }
+
+    .view_comment p a{
+        font-size: 13px;
+        color: #a3a2a2;
+        margin-top: 17px;
+        margin-bottom:2px;
+    }
+
+    .header-responsive{
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        display:show;
+        visibility: visible;
+    }
+    .logo p{
+        font-size: 24px;
+        padding:5px;
+    }
+
+    .icon ul{
+        padding:5px;
+        list-style: none;
+    }
+
+    .icon ul li{
+        /* padding-bottom:20px; */
+        display:inline;
+        font-family: 'Faustina', serif;
+
+    }
+
+    .icon ul li i{
+        font-size:27px;
+        margin-right:15px;
+    }
+
+    .footer{
+
+        width: 100%;
+        height:40px;
+
+
+    }
+
+    .footer_content{
+        position:fixed;
+        bottom:0;
+        display:block;
+        visibility: visible;
+        width: 100%;
+        height:40px;
+    }
+
+    .footer ul{
+        padding: 6px 0px;
+        list-style: none;
+
+    }
+
+    .footer ul li{
+
+        display:inline;
+
+        font-size: 17px;
+        padding-right: 10px;
+        justify-content: space-around;
+        font-family: 'Faustina', serif;
+
+    }
+
+    .footer ul li i{
+        font-size: 24px;
+        padding: 0px 17px;
+    }
+
+
+    /* profile section start */
+    .profile_page{
+        width:100%;
+        display:none;
+        /* padding-top:40px;
+        padding-left:30px; */
+    }
+    .phone_view_header{
+        height:67px;
+
+    }
+
+    .front_header_content{
+        width:100%;
+        position: fixed;
+        top:0;
+        left:5;
+    }
+    .instagram_button{
+        background:black;
+        font-size: 24px;
+        padding: 10px 10px;
+        border:1px solid black;
+    }
+    .instagram_button_droupdown{
+        border:1px solid black;
+        margin-left: -10px;
+        margin-top: 23px;
+    }
+    .droupdown_ul{
+        background: black;
+
+    }
+    .droupdown_ul .droupdown_li{
+        color:white;
+    }
+    .droupdown_ul .droupdown_li a{
+        color:white;
+    }
+    .responsive_profile_page{
+        width:100%;
+        flex-wrap: wrap;
+        /* padding-top:40px;
+        padding-left:30px; */
+    }
+
+   .responsice_profile_section{
+       padding:0px;
+       margin-bottom: 15px;
+       display:flex;
+       margin-top:10px;
+       margin-bottom: 17px;
+       padding-bottom:30px;
+       border-bottom:0.5px solid #484343;
+   }
+
+   .responsive_profile_header_image{
+       width:40%;
+       margin-left: 98px;
+       line-height:1rem;
+   }
+    .main_p_pic{
+        width:128px;
+        height: 100px;
+
+    }
+    .main_p_pic img{
+        height:81px;
+        border-radius: 100%;
+        border: 1px solid #0fceed;
+    }
+
+   /* .responsive_profile_header_image img{
+       width:75px;
+       height:77px;
+       border-radius: 100%;
+       border: 1px solid #0fceed;
+   } */
+
+   .responsive_profile_header_image h3{
+        font-size:20px;
+   }
+
+   .responsive_profile_header_image p{
+        font-size:17px;
+   }
+
+
+
+   /* profile section end */
+
+   /* phone view profile page section start */
+    .phone_view{
+        display:block;
+
+    }
+    .phone_header{
+        display: flex;
+    }
+    .p_h_profile_pic{
+        width:35%;
+
+    }
+    .p_h_main{
+        width:170px;
+        height:200px;
+        border:1px solid green;
+    }
+
+    .p_h_profile_pic img{
+        width:68%;
+        border-radius: 50%;
+        align-items: center;
+        border:1px solid orange;
+        margin-left: 11%;
+    }
+
+
+    .p_h_profile_info{
+        width: 65%;
+        padding: 10px 0px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .p_h_profile_info p{
+        font-size: 18px;
+        margin-top: 15px;
+    }
+
+    .p_h_profile_info h6{
+        text-align:center;
+    }
+    .p_h_bio{
+        border-bottom: 2px solid #171724;
+        padding:0px 26px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .p_h_bio p{
+        margin: 7px 0px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+    .phone_profile_body{
+        height: 80vh;
+    }
+
+
+
+    .phone_profile_body h5{
+        text-align:center;
+        margin:8px 0px;
+    }
+    .p_h_profile_images{
+        margin-bottom:50px;
+    }
+    .p_h_single_post{
+
+        float: left;
+        width: 46%;
+        margin: 2%;
+        height: 72vh;
+
+    }
+
+    .p_h_single_post_image{
+        width:100%;
+
+    }
+    .p_h_single_post_image img{
+        width:100%;
+        height: 130px;
+    }
+
+
+    .p_h_single_post_like i{
+        font-size: 17px;
+        margin-right: 17px;
+    }
+
+   .edit-btn i{
+        font-size: 14px;
+        margin-left: 23px;
+
+    }
+    .p_h_like_count{
+        margin-top: 8px;
+        height: 33px;
+    }
+    .p_h_like_count p{
+        font-size: 13px;
+        line-height: 16px;
+    }
+
+    .p_h_comment_count{
+        height: 24px;
+    }
+
+    .p_h_comment_count p{
+        font-size:10px;
+    }
+
+    /* 3 dots buttons */
+    .droupdown_div{
+        position:fixed;
+        color:white;
+    }
+
+    /* 3 dots buttons end */
+
+    /* edit profile start */
+    .edit_container{
+        display:none;
+    }
+    .responsive_container{
+        display:block;
+    }
+    .responsive_edit_content{
+        width:80%;
+        margin:auto;
+    }
+    /* edit profile end */
+
+    /* add post start */
+    .add_post_con{
+        display:none;
+    }
+    .addpost_responsive_container{
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
+    /* add post end */
+
+    /* comment start */
+    .comment_section{
+        width: 100%;
+        margin: 10px 0px;
+    }
+    .comment_content{
+        padding:10px 0px;
+    }
+    .body_section{
+        width: 90%;
+        margin: auto;
+        padding: 10px 5px;
+    }
+    .comment_content .body_section img{
+        width: 90%;
+    }
+    .footer_section{
+        width:92%;
+    }
+    .like_part {
+        display: flex;
+        margin-top: 8px;
+    }
+    .like_count p {
+        margin: 15px 1px;
+        font-size: 13px;
+        font-weight: 600;
+        font-family: sans-serif;
+    }
+
+    .caption_section h4 {
+        font-family: 'Faustina', serif;
+        margin-right: 11px;
+        font-size: 17px;
+    }
+    .caption_section p {
+        font-size: 14px;
+        color: #dfdfdf;
+        line-height: 14px;
+    }
+
+    .comment_area{
+        display:flex;
+        padding: 10px 0px;
+    }
+
+    .comment_user_profile {
+        padding: 0px 0px;
+    }
+    .comment_profile_image {
+        width: 39px;
+        height: 39px;
+        margin-top: 10px;
+        border-radius: 100%;
+        border: 1px solid orange;
+    }
+
+    .comment_input {
+        width: 88%;
+        padding: 4px 6px;
+        margin-right: 9px;
+        margin-bottom: 12px;
+        margin-top: 4px;
+    }
+    .comment_input input{
+
+        font-size: 15px;
+        padding: 2px 8px;
+
+    }
+
+    .show_comment_area{
+        display: flex;
+        padding: 4px 5px;
+        margin-top: 10px;
+        margin-bottom:30px;
+        border: 1px solid #1e1d1d;
+        border-radius: 10px;
+    }
+
+    .comment_header{
+        display:flex;
+    }
+    .comment_header h5{
+        color: #0fceed;
+        margin-right: 16px;
+        font-size: 17px;
+        margin-left: 10px;
+        padding-top: 17px;
+
+    }
+    .reply-div{
+        margin-bottom: 150px;
+        margin-left: 22px;
+    }
+    .reply-div input{
+       font-size: 14px;
+        margin-right: 9px;
+        margin-bottom: 12px;
+        padding: 2px 8px;
+    }
+    .reply-submit{
+        font-size: 13px;
+        padding: 0px 5px;
+        background-color: purple;
+        border: 1px solid rgb(180, 47, 180);
+        border-radius: 5px;
+    }
+
+    .header_section{
+        display: flex;
+    }
+
+    .header_section h3{
+        padding-top: 14px;
+        padding-left: 20px;
+        font-size: 23px;
+
+    }
+
+    .header_section h3:hover{
+        color:#868686;
+        transition: .3s;
+    }
+
+    .header_section p{
+        padding-top: 19px;
+        padding-left: 50px;
+        font-size: 13px;
+        color: #b7b7b7;
+    }
+
+    .profile_image{
+        width: 53px;
+        height: 51px;
+        border-radius: 100%;
+        border: 3px solid #4adb00d6;
+    }
+    .body_section{
+        margin-top: 9px;
+    }
+    .main_seciton .body_section img{
+        width:100%;
+
+    }
+    .comment_count{
+        font-size: 15px;
+        padding: 5px 5px;
+
+    }
+    .comment_body{
+        padding: 3px 0px;
+        margin-right: 9px;
+
+    }
+    .comment_body p{
+        padding-bottom: 6px;
+        padding-bottom: 1px;
+        font-size: 15px;
+        line-height: 13px;
+
+    }
+    .btn-comment{
+        color: #fff;
+        background-color: #d8172a;
+        border-color: #d41528;
+        font-size: 15px;
+        border-radius: 4px;
+        padding: 0px 5px
+    }
+
+    .btn-comment:hover{
+        color: #fff;
+        background-color: #c42030;
+        border-color: #dd2639;
+        font-size: 15px;
+        border-radius: 4px;
+        padding: 0px 5px
+    }
+    .reply{
+        color: #000;
+        background-color: #ffc107;
+        border-color: #ffc107;
+        font-size: 12px;
+        border-radius: 4px;
+        padding: 2px 4px;
+        margin-left: 58px
+    }
+
+    .reply:hover{
+        color: #000;
+        background-color: #eeb200;
+        border-color: #e6ac00;
+        font-size: 11px;
+        border-radius: 4px;
+        padding: 0px 5px
+    }
+
+    /* comment end */
+
+
+
+
+    /* phone view profile page section end */
 }
 
-.comment_header_section p{
-    padding-top: 17px;
-    padding-left:50px;
-    font-size: 14px;
-    color:#b7b7b7;
-} */
+.responsive_profile_page{
+    display:block;
+    visibility: hidden;
+}
+
+
 
 /* comment section end */
 
