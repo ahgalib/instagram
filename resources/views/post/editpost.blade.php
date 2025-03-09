@@ -8,7 +8,7 @@
         <div class="row justify-content-center mt-5">
 
             <div class="col-md-8 m-2 mt-4">
-                <h3 class="mb-4">Add a Post</h3>
+                <h3 class="mb-4">Edit Your Post</h3>
                 <div class="form-group row m-3 mt-4">
                     Enter caption for your image
                     <label for="caption" class="col-md-4 col-form-label"></label>

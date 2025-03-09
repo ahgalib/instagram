@@ -41,9 +41,9 @@
 
                     </div>
                     <div class="post_follower_info">
-                        <p><strong>{{$user->posts->count()}} </strong> posts</p>
-                        <p><strong>{{$user->profile->follow->count()}} </strong> followers</p>
-                        <p><strong>{{$user->following->count()}} </strong> following</p>
+                        <p><strong>{{$user->posts->count() ?? null}} </strong> posts</p>
+                        <p><strong>{{$user->profile->follow->count() ?? null}} </strong> followers</p>
+                        <p><strong>{{$user->following->count() ?? null}} </strong> following</p>
                     </div>
                     <div class="caption_info">
                         <h4>{{$user->name}}</h4>
@@ -66,7 +66,7 @@
                 @foreach($user->posts as $post)
                     <div class="single_post">
                         <div class="single_post_image">
-                            <img src="{{asset('uploads/posts/')}}/{{$post->image}}" alt="">
+                            <img src="{{asset('uploads/posts/')}}/{{$post->image}}" alt="upload-image">
                         </div>
                         <div class="single_post_like">
                             @if(!$post->likedBy(auth::user()))

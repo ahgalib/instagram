@@ -345,8 +345,9 @@ a:hover{
 }
 .post_image_section img{
     width: 282px;
-    height: 288px;
+    height: 230px;
     margin: 4px;
+    
 }
 
 .single_post_like{
